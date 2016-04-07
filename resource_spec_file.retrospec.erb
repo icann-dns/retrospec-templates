@@ -48,7 +48,8 @@ describe '<%= @type.name -%>' do
         <%- @resources.each do |res| -%>
         it do
           is_expected.to contain_<%= res.type.gsub('::', '__')%>('<%= res.title %>')
-            .with(<%= res.parameters.ai({:indent => -14, :plain => true, :sort_keys => true}).gsub(/^\{/,'').gsub(/\}$/, '').tr('"', "'")%>      )
+            .with(<%= res.parameters.ai({:indent => -14, :plain => true, :sort_keys => true}).gsub(/^\{/,'').gsub(/\}$/, '').tr('"', "'")%>
+            )
         end
         <%- end -%>
       end
@@ -62,7 +63,8 @@ describe '<%= @type.name -%>' do
           <%- @resources.each do |res| -%>
           it do
             is_expected.to contain_<%= res.type.gsub('::', '__')%>('<%= res.title %>')
-              .with(<%= res.parameters.ai({:indent => -16, :plain => true, :sort_keys => true}).gsub(/^\{/,'').gsub(/\}$/, '').tr('"', "'")%>      )
+              .with(<%= res.parameters.ai({:indent => -16, :plain => true, :sort_keys => true}).gsub(/^\{/,'').gsub(/\}$/, '').tr('"', "'") %>
+              )
           end
           <%- end -%>
         end
