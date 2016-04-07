@@ -57,7 +57,7 @@ describe '<%= @type.name -%>' do
       describe 'Change Defaults' do
        <%- @parameters.each do |k,v| -%>
         context '<%= k %>' do
-          before { params.merge!( <%= k %>: XXXchangemeXXX ) }
+          before { params.merge!( <%= k %>: 'XXXchangemeXXX' ) }
           it { is_expected.to compile }
           # Add Check to validate change was successful
         end
