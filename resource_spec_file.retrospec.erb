@@ -59,14 +59,14 @@ describe '<%= @type.name -%>' do
           let(:params) {{ <%= k %>: XXXchangemeXXX }}
           it { is_expected.to compile }
           # Add Check to validate change was successful
+          <%- @resources.each do |res| -%>
+          it do
+            is_expected.to contain_<%= res.type.gsub('::', '__')%>('<%= res.title %>')
+              .with(<%= res.parameters.ai({:indent => -8, :plain => true, :sort_keys => true}).gsub(/^\{/,'').gsub(/\}$/, '').tr('"', "'")%>      )
+          end
+          <%- end -%>
         end
        <%- end -%>
-        <%- @resources.each do |res| -%>
-        it do
-          is_expected.to contain_<%= res.type.gsub('::', '__')%>('<%= res.title %>')
-            .with(<%= res.parameters.ai({:indent => -8, :plain => true, :sort_keys => true}).gsub(/^\{/,'').gsub(/\}$/, '').tr('"', "'")%>      )
-        end
-        <%- end -%>
       end
 
       # You will have to correct any values that should be bool
