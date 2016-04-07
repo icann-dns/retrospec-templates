@@ -55,7 +55,7 @@ describe '<%= @type.name -%>' do
       describe 'check bad type' do
        <%- @parameters.each do |k,v| -%>
         context '<%= k %>' do
-          let(:params) {{ <%= k %>: <%= !!v == v ? [] : false %> }}
+          let(:params) {{ <%= k %>:<%- if  !!v == v -%> false <%- else -%> [] <%- end %> }}
           it { expect { subject.call }.to raise_error(Puppet::Error) }
         end
        <%- end -%>
