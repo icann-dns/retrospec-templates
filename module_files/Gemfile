@@ -10,6 +10,7 @@ group :test do
     gem "metadata-json-lint"
     gem 'puppet-syntax'
     gem 'puppet-lint'
+    gem 'rspec-puppet-facts'
 end
 
 group :integration do
