@@ -52,10 +52,11 @@ describe '<%= @type.name -%>' do
         end
         <%- end -%>
       end
+      # You will have to correct any values that should be bool
       describe 'check bad type' do
        <%- @parameters.each do |k,v| -%>
         context '<%= k %>' do
-          let(:params) {{ <%= k %>:<%- if  ['true', 'false'].include?(v)  -%> [] <%- else -%> true <%- end %> }}
+          let(:params) {{ <%= k %>: false }}
           it { expect { subject.call }.to raise_error(Puppet::Error) }
         end
        <%- end -%>
