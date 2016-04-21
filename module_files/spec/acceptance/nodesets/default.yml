@@ -10,6 +10,7 @@ HOSTS:
     default_apply_opts:
       strict_variables:
     roles:
+      - default
       - freebsd
     platform: freebsd-102-amd64
     box: bento/freebsd-10.2  
