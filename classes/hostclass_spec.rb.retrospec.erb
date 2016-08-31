@@ -8,6 +8,7 @@ describe '<%= type_name -%>' do
   # Note: you can only use a single hiera context per describe/context block
   # rspec-puppet does not allow you to swap out hiera data on a per test block
   #include_context :hiera
+  let(:node) { '<%= type_name %>.example.com' }
 
   # below is the facts hash that gives you the ability to mock
   # facts on a per describe/context block.  If you use a fact in your
@@ -29,8 +30,35 @@ describe '<%= type_name -%>' do
   # add these two lines in a single test block to enable puppet and hiera debug mode
   # Puppet::Util::Log.level = :debug
   # Puppet::Util::Log.newdestination(:console)
-  <%- resources.each do |res| -%>
-  <%= res -%>
-  <%- end -%>
-  
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
+      end
+      describe 'check default config'
+        it { is_expected.to compile.with_all_deps }
+
+        <%- resources.each do |res| -%>
+        <%= res -%>
+        <%- end -%>
+      end
+      describe 'Change Defaults' do
+        <%- @parameters.each do |k,v| -%>
+        context '<%= k %>' do
+          before { params.merge!( <%= k %>: 'XXXchangemeXXX' ) }
+          it { is_expected.to compile }
+          # Add Check to validate change was successful
+        end
+        <%- end -%>
+      end
+      describe 'check bad type' do
+        <%- @parameters.each do |k,v| -%>
+        context '<%= k %>' do
+          before { params.merge!( <%= k %>: true ) }
+          it { expect { subject.call }.to raise_error(Puppet::Error) }
+        end
+        <%- end -%>
+      end
+    end
+  end
 end
