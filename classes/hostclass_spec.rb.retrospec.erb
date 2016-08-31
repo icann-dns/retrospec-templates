@@ -35,9 +35,16 @@ describe '<%= type_name -%>' do
       let(:facts) do
         facts
       end
+      case facts[:operatingsystem]
+      when 'Ubuntu'
+        case facts['lsbdistcodename']
+        when 'precise'
+        else
+        end
+      else
+      end
       describe 'check default config'
         it { is_expected.to compile.with_all_deps }
-
 <% resources.each do |res| %>
         <%= res -%>
 <% end %>
