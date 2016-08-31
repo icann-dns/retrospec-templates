@@ -14,6 +14,7 @@ group :test do
     gem 'rspec-puppet-facts'
 end
 
+# to disable installing the 50+ gems this group contains run : bundle install --without integration
 group :integration do
     gem "beaker"
     gem "beaker-rspec"
@@ -25,5 +26,7 @@ group :development do
     gem "travis"
     gem "travis-lint"
     gem "puppet-blacksmith"
-    gem "guard-rake"
+    gem 'puppet-repl' # assuming you are using puppet 3.8+
+# This gem causes bundler install erorrs
+#    gem "guard-rake"
 end
