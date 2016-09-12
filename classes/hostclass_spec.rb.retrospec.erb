@@ -43,7 +43,7 @@ describe '<%= type_name -%>' do
         end
       else
       end
-      describe 'check default config'
+      describe 'check default config' do
         it { is_expected.to compile.with_all_deps }
 <% resources.each do |res| %>
         <%= res -%>
