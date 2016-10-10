@@ -1,8 +1,12 @@
 source "https://rubygems.org"
 
 ruby ENV['CUSTOM_RUBY_VERSION'] || '2.1.0'
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6f39830... add custom ruby version
 group :test do
+  gem "listen", "<=3.0.6"
   gem "rake"
   gem "puppet", ENV['PUPPET_GEM_VERSION'] || '~> 4.0'
   gem "rspec"
@@ -30,9 +34,3 @@ group :development do
   gem "guard-rake"
 end
 
-group :integration do
-    gem "beaker"
-    gem "beaker-rspec"
-    gem "vagrant-wrapper"
-    gem 'serverspec'
-end
