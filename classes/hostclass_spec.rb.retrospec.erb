@@ -53,7 +53,7 @@ describe '<%= type_name -%>' do
       describe 'Change Defaults' do
 <% parameters.lines.each do |line| -%>
         context '<%= line.split[0][2..-1] %>' do
-          before { params.merge!( <%= line.split[0][2..-1] %>: 'XXXchangemeXXX' ) }
+          before { params.merge!(<%= line.split[0][2..-1] %>: 'XXXchangemeXXX') }
           it { is_expected.to compile }
           # Add Check to validate change was successful
         end
@@ -62,7 +62,7 @@ describe '<%= type_name -%>' do
       describe 'check bad type' do
 <% parameters.lines.each do |line| -%>
         context '<%= line.split[0][2..-1] %>' do
-          before { params.merge!( <%= line.split[0][2..-1] %>: true ) }
+          before { params.merge!(<%= line.split[0][2..-1] %>: true) }
           it { expect { subject.call }.to raise_error(Puppet::Error) }
         end
 <% end -%>
