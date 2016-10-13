@@ -6,7 +6,7 @@ describe '<%= type_name -%>' do
   # to the specific context in the spec/shared_contexts.rb file
   # Note: you can only use a single hiera context per describe/context block
   # rspec-puppet does not allow you to swap out hiera data on a per test block
-  #include_context :hiera
+  # include_context :hiera
   let(:node) { '<%= type_name %>.example.com' }
 
   # below is the facts hash that gives you the ability to mock
