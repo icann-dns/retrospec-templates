@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'shared_contexts'
 
 describe '<%= type_name -%>' do
   # by default the hiera integration uses hiera data from the shared_contexts.rb file
@@ -38,6 +37,7 @@ describe '<%= type_name -%>' do
         facts
       end
       describe 'check default config' do
+        it { is_expected.to compile.with_all_deps }
 <%- resources.each do |res| -%>
         <%= res -%>
 <%- end -%>
