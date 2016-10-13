@@ -31,9 +31,7 @@ describe '<%= type_name -%>' do
   # add these two lines in a single test block to enable puppet and hiera debug mode
   # Puppet::Util::Log.level = :debug
   # Puppet::Util::Log.newdestination(:console)
-  let (:pre_condition) {
-    class {'::xxxCHANGEMExxx' }
-  }
+  let (:pre_condition) { "class {'::xxxCHANGEMExxx' }" }
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) do
