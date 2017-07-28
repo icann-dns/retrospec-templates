@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'puppetlabs_spec_helper/module_spec_helper'
 require 'rspec-puppet-utils'
 # if your using puppet4, the following gem seems to causes issues
