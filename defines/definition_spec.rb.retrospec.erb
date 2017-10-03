@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe '<%= type_name -%>' do
@@ -6,7 +8,7 @@ describe '<%= type_name -%>' do
   # to the specific context in the spec/shared_contexts.rb file
   # Note: you can only use a single hiera context per describe/context block
   # rspec-puppet does not allow you to swap out hiera data on a per test block
-  #include_context :hiera
+  # include_context :hiera
 
   let(:title) { 'XXreplace_meXX' }
 
@@ -27,6 +29,7 @@ describe '<%= type_name -%>' do
     <%- end %>
     }
   end
+
   # add these two lines in a single test block to enable puppet and hiera debug mode
   # Puppet::Util::Log.level = :debug
   # Puppet::Util::Log.newdestination(:console)
@@ -36,6 +39,7 @@ describe '<%= type_name -%>' do
       let(:facts) do
         facts
       end
+
       describe 'check default config' do
         it { is_expected.to compile.with_all_deps }
 <%- resources.each do |res| -%>
