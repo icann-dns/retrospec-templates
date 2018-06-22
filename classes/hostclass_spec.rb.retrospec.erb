@@ -16,12 +16,13 @@ describe '<%= type_name -%>' do
   # it { pp catalogue.resources }
   on_supported_os.each do |os, facts|
     context "on #{os}" do
-    let(:facts) { facts }
+      let(:facts) { facts }
+
       describe 'check default config' do
         it { is_expected.to compile.with_all_deps }
-<% resources.each do |res| %>
-            <%= res -%>
-<% end %>
+<% resources.each do |res| -%>
+            <%= res %>
+<% end -%>
       end
       describe 'Change Defaults' do
 <% parameters.lines.each do |line| -%>
