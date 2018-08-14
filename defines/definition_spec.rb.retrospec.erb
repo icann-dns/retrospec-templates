@@ -43,7 +43,7 @@ describe '<%= type_name -%>' do
   <%- @key = line.split(':')[0].tr('#','').strip -%>
         context '<%= @key %>' do
           before { params.merge!(<%= @key %>: true) }
-          it { expect { subject.call }.to raise_error(Puppet::Error) }
+          it { is_expected.to raise_error(Puppet::Error) }
         end
 <% end -%>
       end
